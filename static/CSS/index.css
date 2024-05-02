@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+/* font-family: "Abril Fatface", serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400..900&display=swap');
+/* font-family: "Cinzel", serif; */
+.container-01 {
+    margin: 70px auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-direction: row;
+}
+
+.container-01 img {
+    border-radius: 20px;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Adicionando transição para suavizar os efeitos */
+}
+
+.card1 {
+    position: relative; /* Posicionamento relativo para o conteúdo do card */
+}
+
+.card1 .legenda { /* Classe para o texto que aparece no hover */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: 'Abril Fatface', serif;
+    font-size: 24px;
+    opacity: 0; /* Texto inicialmente transparente */
+    transition: opacity 0.3s ease; /* Adicionando transição para suavizar o efeito de opacidade */
+}
+
+.card1:hover img { /* Estilos para a imagem no hover */
+    transform: scale(1.1); /* Zoom na imagem */
+    filter: brightness(0.9); /* Escurecendo a imagem */
+}
+
+.card1:hover .legenda { /* Estilos para o texto no hover */
+    opacity: 1; /* Texto se torna opaco */
+}
+
+/* ====================================== */
+.novidades {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+.novidades img{
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+}
+.container-2 {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    width: 350px;
+    background-color: var(--cinza-claro);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin:20px 30px;
+  }
+  
+  .card-image {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--rosa-po);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  .new-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--dourado);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  .card-content {
+    padding: 20px;
+  }
+  
+  .card-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card-content p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .price-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .old-price {
+    text-decoration: line-through;
+    color: #ccc;
+  }
+  
+  .new-price {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .installment-options {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .add-to-cart-button {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--azul-royal);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #11365e;
+  }
+/* ======================================== */
+.container-04 {
+  position: relative; /* Posicionamento relativo para o efeito paralax */
+  height: 100vh; /* Altura do container */
+  background-color: #000; /* Cor de fundo caso a imagem não carregue */
+}
+
+.imagem-fundo {
+  position: absolute; /* Posicionamento absoluto para o efeito paralax */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(https://t3.ftcdn.net/jpg/06/53/61/26/240_F_653612605_jV8ER4tPXKJXih0bSswA6dah52GS1DQL.jpg); /* Substitua por URL da sua imagem */
+  background-size: cover; /* Cobertura total da imagem */
+  background-position: center; /* Posicionamento central da imagem */
+  filter: brightness(0.5); /* Reduz a luminosidade da imagem */
+}
+
+.texto-frente {
+  position: absolute; /* Posicionamento absoluto para centralizar o texto */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
+  text-align: center; /* Alinha o texto no centro */
+  color: #fff; /* Cor do texto */
+  width: 80%; /* Largura do texto */
+}
+
+.texto-frente h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.texto-frente p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.texto-frente .botao-cadastro {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--azul-royal);
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.texto-frente .botao-cadastro:hover {
+  background-color: #11365e;
+}

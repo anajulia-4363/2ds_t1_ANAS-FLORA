@@ -1,0 +1,78 @@
+/* Redefinição de Estilos Básicos */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  ul,
+  ol {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  img {
+    border: 0;
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+  
+  input,
+  button,
+  textarea,
+  select {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    color: inherit;
+  }
+  
+  /* Normalização de Estilos de Texto */
+  
+  body {
+    font-family: "Cinzel", serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-color: var(--creme);
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 20px 0 10px;
+    font-weight: normal;
+  }
+  
+  p {
+    margin: 10px 0;
+  }
+  
+  :focus {
+    outline: 2px solid #000;
+  }
+  
+  /* Cores Primárias */
+:root {
+    --azul-royal: #010e22;
+    --creme: #F2E2AC;
+    --rosa-po: #f7028d;
+    --dourado: #E07900;
+  }
+  
+  /* Cores de Suporte */
+  :root {
+    --branco: #FFFFFF;
+    --cinza-claro: #F2F2F2;
+  }
+  
