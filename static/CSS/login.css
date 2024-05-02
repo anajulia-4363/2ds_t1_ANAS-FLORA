@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+/* font-family: "Abril Fatface", serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400..900&display=swap');
+/* font-family: "Cinzel", serif; */
+
+.logo_img{
+    padding-top: 60px;
+    cursor: pointer
+}
+.logo_img img{
+    width: 100px;
+    height: auto;
+}
+.li__botao{
+    cursor: pointer;
+}
+header{
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: large;
+    position: relative;
+    z-index: 1;
+    background-color: var(--dourado);
+
+}
+header ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+/* ===================== */
+.container-01 {
+    position: relative; /* Posicionamento relativo para o efeito paralax */
+    height: 100vh; /* Altura do container */
+    background-color: #000; /* Cor de fundo caso a imagem não carregue */
+  }
+  
+  .imagem-fundo {
+    position: absolute; /* Posicionamento absoluto para o efeito paralax */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/static/IMG/logos/SEJA-ANA-LOVER.png); /* Substitua por URL da sua imagem */
+    background-size: cover; /* Cobertura total da imagem */
+    background-position: center; /* Posicionamento central da imagem */
+  }
+
+  
+/* ========== */
+  /* Estilos para a seção de cadastro */
+  #cadastro, #login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    text-align: center;
+  }
+  
+  #cadastro h2, #login h2 {
+    margin-bottom: 20px;
+    color: var(--dourado);
+    font-size: 3rem;
+  }
+  
+  /* Estilos para o formulário */
+  form {
+    width: 100%;
+    max-width: 700px;
+    border: 1px solid var(--dourado);
+    padding: 40px 50px;
+  }
+  
+  .campo {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--azul-royal);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #1c2d3e;
+  }
+  
+  /* Estilos para a imagem de fundo */
+  .imagem_fundo_cadastro {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .imagem_fundo_cadastro img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  .imagem-flutuante {
+    float: right;
+    width: 200px; /* Ajuste a largura da imagem */
+    margin: 0 20px; /* Adicione margem para espaçar a imagem */
+}
+
+.container {
+    width: 80%; /* Defina a largura do container */
+    margin: 0 auto; /* Centralize o container na tela */
+}
+
+  /* Estilos responsivos */
+  @media screen and (max-width: 768px) {
+    #cadastro {
+      padding: 30px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    form {
+      max-width: 300px;
+    }
+  }
+  
