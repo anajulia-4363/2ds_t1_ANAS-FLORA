@@ -158,3 +158,6 @@ header ul{
     }
   }
   
+  #cadastro , #login{
+    visibility: hidden;
+  }

@@ -1,3 +1,13 @@
+ScrollReveal().reveal(`.container-2`,{
+    rotate:{x:0, y: 80, z:0},
+    duration:2000
+});
+ScrollReveal().reveal(`.texto-frente`,{
+    duration:2000
+});
+
+
+
 let list = document.querySelectorAll('.carousel .list .item');
 let carousel = document.querySelector('.carousel');
 let next = document.getElementById('next');

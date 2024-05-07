@@ -212,3 +212,6 @@
 .texto-frente .botao-cadastro:hover {
   background-color: #11365e;
 }
+.container-2, .texto-frente{
+  visibility: hidden;
+}
