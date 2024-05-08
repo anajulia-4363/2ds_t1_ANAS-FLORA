@@ -1,4 +1,12 @@
 //step 1: get DOM
+ScrollReveal().reveal(`.container-01`,{duration:2000});
+ScrollReveal().reveal(`.texto-frente`,{duration:2000});
+ScrollReveal().reveal(`.card`,{duration:2000});
+ScrollReveal().reveal(`.container-02`,{
+    rotate:{x:0, y: 80, z:0},
+    duration:2000
+});
+
 let nextDom = document.getElementById('next');
 let prevDom = document.getElementById('prev');
 

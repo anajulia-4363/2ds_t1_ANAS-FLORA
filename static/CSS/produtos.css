@@ -317,3 +317,259 @@ header a{
         font-size: 30px;
     }
 }
+/* -================================- */
+.container-01{
+    width: 100vw;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 30px 0;
+    visibility: hidden;
+}
+.c01-campo{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.c01-campo img{
+    width: 40%;
+}
+/* -==============- */
+.container-02 {
+margin: 70px auto;
+display: flex;
+justify-content: space-evenly;
+align-content: center;
+flex-direction: row;
+visibility: hidden;
+}
+
+.container-02 img {
+    width: 360px;
+    height: 240px;
+    object-fit:cover;
+    border-radius: 30px;   
+    transition: transform 0.3s ease, filter 0.3s ease; /* Adicionando transição para suavizar os efeitos */
+}
+
+.card1 {
+position: relative; /* Posicionamento relativo para o conteúdo do card */
+}
+
+.card1 .legenda { /* Classe para o texto que aparece no hover */
+position: absolute;
+top: 50%;
+left: 50%;
+text-decoration: none;
+transform: translate(-50%, -50%);
+text-align: center;
+color: white;
+font-family: 'Abril Fatface', serif;
+font-size: 24px;
+opacity: 0; /* Texto inicialmente transparente */
+transition: opacity 0.7s ease; /* Adicionando transição para suavizar o efeito de opacidade */
+}
+
+.card1:hover img { /* Estilos para a imagem no hover */
+transform: scale(1.1); /* Zoom na imagem */
+filter: brightness(0.9); /* Escurecendo a imagem */
+}
+
+.card1:hover .legenda { /* Estilos para o texto no hover */
+opacity: 1; /* Texto se torna opaco */
+}
+/* -==========================- */
+.container-03 {
+    position: relative; /* Posicionamento relativo para o efeito paralax */
+    height: 100vh; /* Altura do container */
+    background-color: #000; /* Cor de fundo caso a imagem não carregue */
+  }
+  
+  .imagem-fundo {
+    position: absolute; /* Posicionamento absoluto para o efeito paralax */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:linear-gradient(rgba(51, 50, 50, 0.411),rgba(43, 41, 41, 0.466)),url('https://t4.ftcdn.net/jpg/01/41/56/81/240_F_141568139_JJHYz2EJphqB19O7rf7uN6wO9L2s4lqE.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  
+  .texto-frente {
+    position: absolute; /* Posicionamento absoluto para centralizar o texto */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
+    text-align: center; /* Alinha o texto no centro */
+    color: var(--creme); /* Cor do texto */
+    width: 80%; /* Largura do texto */
+    visibility: hidden;
+  }
+  
+  .texto-frente h1 {
+    font-size: 41px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .texto-frente .botao-cadastro {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--azul-royal);
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .texto-frente .botao-cadastro:hover {
+    background-color: #11365e;
+  }
+/* -=====- */
+.card_perfumes_contaiener {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    width: 350px;
+    background-color: var(--cinza-claro);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin:20px 30px;
+    visibility: hidden;
+  }
+  
+  .card-image {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--rosa-po);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  .new-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--dourado);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  .card-content {
+    padding: 20px;
+  }
+  
+  .card-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card-content p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .price-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .old-price {
+    text-decoration: line-through;
+    color: #ccc;
+  }
+  
+  .new-price {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .installment-options {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .add-to-cart-button {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--azul-royal);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #11365e;
+  }
+/* -============================- */
+.container-05 {
+    position: relative; /* Posicionamento relativo para o efeito paralax */
+    height: 100vh; /* Altura do container */
+    background-color: #000; /* Cor de fundo caso a imagem não carregue */
+  }
+  
+  .imagem-fundo-05 {
+    position: absolute; /* Posicionamento absoluto para o efeito paralax */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:linear-gradient(rgba(51, 50, 50, 0.411),rgba(43, 41, 41, 0.466)),url('https://t4.ftcdn.net/jpg/03/48/84/31/240_F_348843134_aXKVr5VHYdsphPSCmWCBEkmCBkcR8nbY.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  
+  .texto-frente {
+    position: absolute; /* Posicionamento absoluto para centralizar o texto */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
+    text-align: center; /* Alinha o texto no centro */
+    color: var(--azul-royal); /* Cor do texto */
+    width: 80%; /* Largura do texto */
+    visibility: hidden;
+  }
+  
+  .texto-frente h1 {
+    font-size: 41px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
