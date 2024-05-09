@@ -417,20 +417,7 @@ opacity: 1; /* Texto se torna opaco */
     font-size: 41px;
     font-weight: bold;
     margin-bottom: 20px;
-  }
-  .texto-frente .botao-cadastro {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--azul-royal);
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .texto-frente .botao-cadastro:hover {
-    background-color: #11365e;
+    color: #ccc;
   }
 /* -=====- */
 .card_perfumes_contaiener {
@@ -571,5 +558,25 @@ opacity: 1; /* Texto se torna opaco */
   .texto-frente h1 {
     font-size: 41px;
     font-weight: bold;
+    color: #ccc;
     margin-bottom: 20px;
   }
+/* -=======- */
+.container-06 {
+    position: relative; /* Posicionamento relativo para o efeito paralax */
+    height: 100vh; /* Altura do container */
+    background-color: #000; /* Cor de fundo caso a imagem não carregue */
+  }
+  
+  .imagem-fundo-06 {
+    position: absolute; /* Posicionamento absoluto para o efeito paralax */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:linear-gradient(rgba(51, 50, 50, 0.411),rgba(43, 41, 41, 0.466)),url('https://t4.ftcdn.net/jpg/06/72/14/55/240_F_672145591_atENb4mAII2sMEfkJR93ltycf9dxzMvv.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
