@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+/* font-family: "Abril Fatface", serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400..900&display=swap');
+/* font-family: "Cinzel", serif; */
+
+header{
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: large;
+    position: relative;
+    z-index: 1;
+}
+header ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.logo_img{
+    padding-top: 60px;
+    cursor: pointer
+}
+.logo_img img{
+    width: 100px;
+    height: auto;
+}
+
+main{
+    margin-top: -40px;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+}
+.lado_esquerdo,.lado_direito{
+    width: 50%;
+    height: 100%;
+}
+.lado_esquerdo img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.lado_direito{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+/* .campo{
+    visibility: hidden;
+} */
+.lado_direito p{
+    text-align: right;
+}
+.descricao{
+    padding: 20px;
+}
+
+/* Título do formulário */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Caixa de comentário */
+.caixa-comentario {
+    display: flex;
+    align-items: center;
+}
+
+/* Label para o campo de comentário */
+label {
+    margin-right: 10px;
+}
+
+/* Input de comentário */
+#comentario {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botão de envio */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Espaço para comentários */
+.espaco-comentarios {
+    margin-top: 20px;
+}
+
+/* Título dos comentários */
+h3 {
+    margin-bottom: 10px;
+}
+
+/* Lista de comentários */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Comentário individual */
+.comentario {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

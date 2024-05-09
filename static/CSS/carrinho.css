@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+/* font-family: "Abril Fatface", serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400..900&display=swap');
+/* font-family: "Cinzel", serif; */
+
+header{
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: large;
+    position: relative;
+}
+header ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.logo_img{
+    padding-top: 60px;
+    cursor: pointer
+}
+.logo_img img{
+    width: 100px;
+    height: auto;
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: auto;
+    margin-top: 30px;
+}
+.container{
+    width: 60%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid var(--dourado);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.container button{
+    align-items: center;
+}
+.campo_produto{
+    display: flex;
+}
+.campo_produto img{
+    width: 150px;
+    height: auto;
+    border-radius: 20px;
+}
+.img{
+    padding: 10px 20px 10px 0;
+}
+/* -========- */
+/* Estilos para todos os botões */
+button {
+    background-color: #ccc; /* Cor de fundo inicial */
+    color: #333; /* Cor do texto */
+    border: none; /* Remover borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    cursor: pointer; /* Indicar que é um botão */
+    background-clip: border-box; /* Exibir o fundo até a borda */
+    transition: background-position 0.3s ease; /* Tempo e tipo de transição */
+  }
+  
+  /* Estilos para o botão quando o mouse passa sobre ele */
+  button:hover {
+    background-color: transparent;
+  }
+  
+  /* Estilos específicos para o botão "Comprar" */
+  .comprar {
+    background-color: var(--dourado); /* Cor de fundo inicial para "Comprar" */
+    color: #fff; /* Cor do texto para "Comprar" */
+    border: 1px solid var(--dourado);
+  }
+  .comprar:hover{
+    border: 1px solid var(--dourado);
+    color: var(--dourado);
+  }
+  /* Estilos específicos para o botão "Excluir" */
+  .excluir {
+    background-color: var(--azul-royal); /* Cor de fundo inicial para "Excluir" */
+    border:1px solid var(--azul-royal);
+    color: #fff; /* Cor do texto para "Excluir" */
+  }
+  .excluir:hover{
+    border:1px solid var(--azul-royal);
+    color: var(--azul-royal);
+  }
+  
+  
