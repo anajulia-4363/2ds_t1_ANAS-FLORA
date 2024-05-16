@@ -79,6 +79,28 @@ def pagina__produtos():
     else:
         # Redirecionar para a página de login-cadastro se o usuário não estiver autenticado
         return redirect('/login-cadastro')
+    
+@app.route("/produtos")
+def produtos():
+    # Conectando ao banco de dados
+    mydb = Conexao.conectar()
+    cursor = mydb.cursor()
+
+    # Consulta SQL para obter todos os produtos
+    cursor.execute("SELECT * FROM Produto")# pegar somente o feminino e mandar (la no html tem que puxar pelo 0,1,2,3...)
+    produtos = cursor.fetchall()
+
+    # Fechar cursor e conexão
+    cursor.close()
+    mydb.close()
+
+    # Enviar os produtos para o template HTML
+    return render_template('produtos.html', produtos=produtos)
+
+
+
+
+
 
 @app.route("/carrinho")
 def pagina__carrinho():

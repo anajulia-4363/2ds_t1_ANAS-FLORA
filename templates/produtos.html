@@ -184,261 +184,42 @@
             </div>
         </section>
 
-        <section>
-            <div class="card_perfumes_contaiener">
-                <div class="card">
-                  <div class="card-image">
-                    <img src="/static/IMG/PERFUMES/propaganda/Aurora Primavera.png" alt="Perfume floral">
-                    <span class="discount-badge">-16%</span>
-                    <span class="new-badge">Lançamento</span>
-                  </div>
-                  <div class="card-content">
-                    <h3>Aurora 100ml</h3>
-                    <br>
-                    <div class="price-wrapper">
-                      <div class="old-price">R$ 174,00</div>
-                      <div class="new-price">R$ 150,00</div>
-                    </div>
-                    <div class="installment-options">
-                      <span>2 x de R$ 75,00</span>
-                    </div>
-                    <br>
-                    <button class="add-to-cart-button">Comprar</button>
-                  </div>
-                </div>
-    
-                <div class="card">
-                    <div class="card-image">
-                      <img src="/static/IMG/PERFUMES/propaganda/Brisa.png" alt="Perfume floral">
-                      <span class="discount-badge">-16%</span>
-                      <span class="new-badge">Lançamento</span>
-                    </div>
-                    <div class="card-content">
-                      <h3>Brisa 100ml</h3>
-                      <br>
-                      <div class="price-wrapper">
-                        <div class="old-price">R$ R$150.80</div>
-                        <div class="new-price">R$ R$130,00</div>
-                      </div>
-                      <div class="installment-options">
-                        <span>2 x de R$ 65,00</span>
-                      </div>
-                      <br>
-                      <button class="add-to-cart-button">Comprar</button>
-                    </div>
-                  </div>
-                  
-                  <div class="card">
-                    <div class="card-image">
-                      <img src="/static/IMG/PERFUMES/propaganda/Floresta.png" alt="Perfume floral">
-                      <span class="discount-badge">-16%</span>
-                      <span class="new-badge">Lançamento</span>
-                    </div>
-                    <div class="card-content">
-                      <h3>Flor-green 100ml</h3>
-                      <br>
-                      <div class="price-wrapper">
-                        <div class="old-price">R$ R$150.80</div>
-                        <div class="new-price">R$ R$130,00</div>
-                      </div>
-                      <div class="installment-options">
-                        <span>2 x de R$ 65,00</span>
-                      </div>
-                      <br>
-                      <button class="add-to-cart-button">Comprar</button>
-                    </div>
-                  </div>
-    
-                  <div class="card">
-                    <div class="card-image">
-                      <img src="/static/IMG/PERFUMES/propaganda/Sonhos.png" alt="Perfume floral">
-                      <span class="new-badge">Lançamento</span>
-                    </div>
-                    <div class="card-content">
-                      <h3>Sonhos 150ml</h3>
-                      <br>
-                      <div class="price-wrapper">
-                        <div class="new-price">R$160,00</div>
-                      </div>
-                      <div class="installment-options">
-                        <span>2 x de R$ 65,00</span>
-                      </div>
-                      <br>
-                      <button class="add-to-cart-button">Comprar</button>
-                    </div>
-                  </div>
-    
-                  <div class="card">
-                    <div class="card-image">
-                      <img src="/static/IMG/PERFUMES/propaganda/Paixão.png" alt="Perfume floral">
-                      <span class="new-badge">Lançamento</span>
-                    </div>
-                    <div class="card-content">
-                      <h3>Paixão 150ml</h3>
-                      <br>
-                      <div class="price-wrapper">
-                        <div class="new-price">R$190,00</div>
-                      </div>
-                      <div class="installment-options">
-                        <span>2 x de R$ 65,00</span>
-                      </div>
-                      <br>
-                      <button class="add-to-cart-button">Comprar</button>
-                    </div>
-                  </div>
-    
-                  <div class="card">
-                    <div class="card-image">
-                      <img src="/static/IMG/PERFUMES/propaganda/Liberdade.png" alt="Perfume floral">
-                      <span class="new-badge">Lançamento</span>
-                    </div>
-                    <div class="card-content">
-                      <h3>Liberdade 150ml</h3>
-                      <br>
-                      <div class="price-wrapper">
-                        <div class="new-price">R$140,00</div>
-                      </div>
-                      <div class="installment-options">
-                        <span>2 x de R$ 65,00</span>
-                      </div>
-                      <br>
-                      <button class="add-to-cart-button">Comprar</button>
-                    </div>
-                  </div>
-              </div>   
-        </section>
-        
-        <section class="container-05" id="perfume_masculino">
-            <div class="imagem-fundo-05"></div>
-            <div class="texto-frente">
-              <h1>PERFUMES MASCULINOS</h1>
-            </div>
-        </section>
+      <!-- Seção onde os cards dos produtos femininos serão exibidos -->
+<section>
+  <div class="card_perfumes_container">
+      <!-- Início do loop para cada produto feminino -->
+      {% for produto in produtos_femininos %}
+      <div class="card">
+          <div class="card-image">
+              <img src="{{ produto.img_perfume }}" alt="{{ produto.nome_perfume }}">
+              <span class="discount-badge">-{{ produto.desconto }}%</span>
+              {% if produto.novo %}<span class="new-badge">Novo</span>{% endif %}
+          </div>
+          <div class="card-content">
+              <h3>{{ produto.nome_perfume }}</h3>
+              <br>
+              <div class="price-wrapper">
+                  <div class="old-price">R$ {{ produto.preco_antigo }}</div>
+                  <div class="new-price">R$ {{ produto.preco }}</div>
+              </div>
+              <div class="installment-options">
+                  <span>{{ produto.parcelas }}</span>
+              </div>
+              <br>
+              <button class="add-to-cart-button">Comprar</button>
+              <button class="add-to-cart-button">Mais</button>
+          </div>
+      </div>
+      {% endfor %}
+      <!-- Fim do loop -->
+  </div>
+</section>
 
-        <section>
-            <div class="card_perfumes_contaiener">
-                <div class="card">
-                  <div class="card-image">
-                    <img src="/static/IMG/PERFUMES/propaganda/Aurora Primavera.png" alt="Perfume floral">
-                    <span class="discount-badge">-16%</span>
-                    <span class="new-badge">Lançamento</span>
-                  </div>
-                  <div class="card-content">
-                    <h3>Aurora 100ml</h3>
-                    <br>
-                    <div class="price-wrapper">
-                      <div class="old-price">R$ 174,00</div>
-                      <div class="new-price">R$ 150,00</div>
-                    </div>
-                    <div class="installment-options">
-                      <span>2 x de R$ 75,00</span>
-                    </div>
-                    <br>
-                    <button class="add-to-cart-button">Comprar</button>
-                  </div>
-                </div>
-    
-                <div class="card">
-                    <div class="card-image">
-                      <img src="/static/IMG/PERFUMES/propaganda/Brisa.png" alt="Perfume floral">
-                      <span class="discount-badge">-16%</span>
-                      <span class="new-badge">Lançamento</span>
-                    </div>
-                    <div class="card-content">
-                      <h3>Brisa 100ml</h3>
-                      <br>
-                      <div class="price-wrapper">
-                        <div class="old-price">R$ R$150.80</div>
-                        <div class="new-price">R$ R$130,00</div>
-                      </div>
-                      <div class="installment-options">
-                        <span>2 x de R$ 65,00</span>
-                      </div>
-                      <br>
-                      <button class="add-to-cart-button">Comprar</button>
-                    </div>
-                  </div>
-                  
-                  <div class="card">
-                    <div class="card-image">
-                      <img src="/static/IMG/PERFUMES/propaganda/Floresta.png" alt="Perfume floral">
-                      <span class="discount-badge">-16%</span>
-                      <span class="new-badge">Lançamento</span>
-                    </div>
-                    <div class="card-content">
-                      <h3>Flor-green 100ml</h3>
-                      <br>
-                      <div class="price-wrapper">
-                        <div class="old-price">R$ R$150.80</div>
-                        <div class="new-price">R$ R$130,00</div>
-                      </div>
-                      <div class="installment-options">
-                        <span>2 x de R$ 65,00</span>
-                      </div>
-                      <br>
-                      <button class="add-to-cart-button">Comprar</button>
-                    </div>
-                  </div>
-    
-                  <div class="card">
-                    <div class="card-image">
-                      <img src="/static/IMG/PERFUMES/propaganda/Sonhos.png" alt="Perfume floral">
-                      <span class="new-badge">Lançamento</span>
-                    </div>
-                    <div class="card-content">
-                      <h3>Sonhos 150ml</h3>
-                      <br>
-                      <div class="price-wrapper">
-                        <div class="new-price">R$160,00</div>
-                      </div>
-                      <div class="installment-options">
-                        <span>2 x de R$ 65,00</span>
-                      </div>
-                      <br>
-                      <button class="add-to-cart-button">Comprar</button>
-                    </div>
-                  </div>
-    
-                  <div class="card">
-                    <div class="card-image">
-                      <img src="/static/IMG/PERFUMES/propaganda/Paixão.png" alt="Perfume floral">
-                      <span class="new-badge">Lançamento</span>
-                    </div>
-                    <div class="card-content">
-                      <h3>Paixão 150ml</h3>
-                      <br>
-                      <div class="price-wrapper">
-                        <div class="new-price">R$190,00</div>
-                      </div>
-                      <div class="installment-options">
-                        <span>2 x de R$ 65,00</span>
-                      </div>
-                      <br>
-                      <button class="add-to-cart-button">Comprar</button>
-                    </div>
-                  </div>
-    
-                  <div class="card">
-                    <div class="card-image">
-                      <img src="/static/IMG/PERFUMES/propaganda/Liberdade.png" alt="Perfume floral">
-                      <span class="new-badge">Lançamento</span>
-                    </div>
-                    <div class="card-content">
-                      <h3>Liberdade 150ml</h3>
-                      <br>
-                      <div class="price-wrapper">
-                        <div class="new-price">R$140,00</div>
-                      </div>
-                      <div class="installment-options">
-                        <span>2 x de R$ 65,00</span>
-                      </div>
-                      <br>
-                      <button class="add-to-cart-button">Comprar</button>
-                    </div>
-                  </div>
-              </div>   
-        </section>
+                
 
+
+
+               <!-- Inicio cards masculinos  -->
         <section class="container-06" id="perfume_masculino">
           <div class="imagem-fundo-06"></div>
           <div class="texto-frente">
