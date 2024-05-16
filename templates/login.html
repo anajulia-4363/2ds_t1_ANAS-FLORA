@@ -13,9 +13,17 @@
     <div class="logo_img" href="/"><img src="/static/IMG/logos/logo.png" alt="Logo" href="/"></div>
     <nav>
       <ul>
-        <li class="li__botao"><a href="/">HOME</a></li>
+          <li><a href="/">Home</a></li>
+          <!-- Outros links de navegação -->
+          {% if 'usuario' in session %}
+              <li>Bem-vindo, {{ session['usuario']['nome'] }}</li>
+              <li><a href="/logout">Logout</a></li>
+          {% else %}
+              <li><a href="/login-cadastro">Login / Cadastro</a></li>
+          {% endif %}
       </ul>
-    </nav>
+  </nav>
+  
   </header>
   
     <main>

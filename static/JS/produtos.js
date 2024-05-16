@@ -7,6 +7,20 @@ ScrollReveal().reveal(`.container-02`,{
     duration:2000
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let nextDom = document.getElementById('next');
 let prevDom = document.getElementById('prev');
 
