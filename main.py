@@ -6,6 +6,13 @@ app = Flask(__name__)
 app = Flask(__name__)
 app.secret_key = 'anas123'  # Defina uma chave secreta para a sessão
 
+        
+@app.route("/logout")
+def logout():
+    # Remover a chave 'usuario' da sessão
+    session.pop('usuario', None)
+    # Redirecionar para a página de login-cadastro após o logout
+    return redirect('/login-cadastro')
 
 @app.route("/")
 def pagina__inicial():
