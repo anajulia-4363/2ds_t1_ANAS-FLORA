@@ -19,16 +19,16 @@
     </header>
     <main>
         <div class="lado_esquerdo">
-            <img src="/static/IMG/PERFUMES/propaganda/Alegria.png" alt="">
+            <img src="{{ perfume_escolhidoID[4] }}" alt="">
         </div>
         <div class="lado_direito">
             <div class="campo">
-                <h1>NOME DO PERFUME</h1>
-                <p>CATEGORIA DO PERFUME</p>
+                <h1>{{ perfume_escolhidoID[1] }}</h1>
+                <p>{{ perfume_escolhidoID[5] }}</p>
             </div>
             <div class="campo descricao">
                 <hr>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non modi ad omnis velit in et eveniet. Voluptate ratione ipsam minima perferendis praesentium quis provident necessitatibus laudantium similique. Ratione, blanditiis vero?</p>
+                <p>{{ perfume_escolhidoID[2] }}</p>
                 <hr>
             </div>
             <div class="campo">
@@ -44,7 +44,8 @@
                 <div class="espaco-comentarios">
                     <h3>Comentários Recentes</h3>
                     <ul>
-                        </ul>
+                        <!-- Aqui você pode iterar sobre os comentários, se necessário -->
+                    </ul>
                 </div>
             </div>
         </div>

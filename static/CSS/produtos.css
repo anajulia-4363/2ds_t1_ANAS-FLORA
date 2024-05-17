@@ -556,7 +556,7 @@ opacity: 1; /* Texto se torna opaco */
     background-color: #000; /* Cor de fundo caso a imagem não carregue */
   }
   
-  .imagem-fundo-05 {
+  .imagemfundo-05 {
     position: absolute; /* Posicionamento absoluto para o efeito paralax */
     top: 0;
     left: 0;

@@ -8,7 +8,7 @@ app.secret_key = 'anas123'  # Defina uma chave secreta para a sessão
 @app.route("/")
 def pagina_inicial():
     return render_template('index.html')
-
+# -----------------------------------------------------------------------------
 @app.route("/login-cadastro")
 def pagina_login_cadastro():
     return render_template('login.html')
@@ -46,6 +46,8 @@ def cadastro():
     # Retornar uma resposta indicando o sucesso do cadastro
     return render_template('produtos.html')
 
+# -----------------------------------------------------------------------------
+
 @app.route('/login', methods=['POST'])
 def login():
     # Conectando ao banco de dados
@@ -68,6 +70,7 @@ def login():
         alerta = "<script>alert(`Credenciais inválidas. Por favor, tente novamente.`);</script>"
         return render_template('login.html', alerta=alerta)
 
+# -----------------------------------------------------------------------------
 
 @app.route("/produtos")
 def pagina_produtos():
@@ -81,31 +84,63 @@ def pagina_produtos():
         cursor.execute("SELECT * FROM Perfume WHERE genero = 'Feminino'")
         prdts_feminino = cursor.fetchall()
 
+        cursor.execute("SELECT * FROM Perfume WHERE genero = 'Masculino'")
+        prdts_masculino = cursor.fetchall()
+
+        cursor.execute("SELECT * FROM Perfume WHERE genero = 'Infantil'")
+        prdts_infantil = cursor.fetchall()
+
         # Fechar cursor e conexão
         cursor.close()
         mydb.close()
 
         # Enviar os produtos para o template HTML dentro da classe prdts_feminino
-        return render_template('produtos.html', prdts_feminino=prdts_feminino)
+        return render_template('produtos.html', 
+                               prdts_feminino=prdts_feminino,
+                               prdts_masculino=prdts_masculino,
+                               prdts_infantil=prdts_infantil)
     else:
         # Redirecionar para a página de login-cadastro se o usuário não estiver autenticado
         return redirect('/login-cadastro')
     
-
-
-
-
-
-
+# -----------------------------------------------------------------------------
 
 
 @app.route("/carrinho")
 def pagina_carrinho():
+    
+   
+
     return render_template('carrinho.html')
+
+# -----------------------------------------------------------------------------
+
+@app.route("/cep")
+def pagina_cep():
+    
+   
+
+    return render_template('cep.html')
+
+
+
+# -----------------------------------------------------------------------------
 
 @app.route("/produto-escolhido/<id_prt_escolhido>")
 def pagina_produto_escolhido(id_prt_escolhido):
-    return render_template('produto_escolhido.html')
+    
+    mydb = Conexao.conectar()
+    cursor = mydb.cursor()
+    cursor.execute(f'SELECT * FROM Perfume WHERE id_perfume = {id_prt_escolhido} ')
+    perfume_escolhidoID = cursor.fetchone()
+
+    # Fechar cursor e conexão
+    cursor.close()
+    mydb.close()
+    return render_template('produto_escolhido.html',
+                           perfume_escolhidoID = perfume_escolhidoID)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
