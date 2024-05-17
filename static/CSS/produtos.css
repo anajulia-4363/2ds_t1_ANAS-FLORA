@@ -438,6 +438,12 @@ opacity: 1; /* Texto se torna opaco */
     margin:20px 30px;
     visibility: hidden;
   }
+  .card:hover .card-image img {
+    transform: scale(1.1); /* Aumenta o tamanho em 10% quando o mouse passa sobre o card */
+    transition: transform 0.3s ease; /* Adiciona uma transição suave para o efeito */
+  }
+  
+  
   
   .card-image {
     position: relative;
@@ -509,7 +515,7 @@ opacity: 1; /* Texto se torna opaco */
     color: #666;
   }
   
-  .add-to-cart-button {
+  .btncomprar {
     display: block;
     width: 100%;
     padding: 10px 20px;
@@ -519,11 +525,30 @@ opacity: 1; /* Texto se torna opaco */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-bottom: 10px;
   }
   
-  .add-to-cart-button:hover {
+  .btncomprar:hover {
     background-color: #11365e;
   }
+
+  .btnmais {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--rosa-po);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  
+  .btnmais:hover {
+    background-color: #ff48b0;
+  }
+
 /* -============================- */
 .container-05 {
     position: relative; /* Posicionamento relativo para o efeito paralax */

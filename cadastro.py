@@ -5,6 +5,7 @@ from hashlib import sha256
 
 
 
+  
 def cadastrar_usuario():
     # Conectando ao banco de dados
     try:
