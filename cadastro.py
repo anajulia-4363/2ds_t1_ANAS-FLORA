@@ -2,6 +2,9 @@
 
 from conexao_SQL import Conexao
 from hashlib import sha256
+
+
+
   
 def cadastrar_usuario():
     # Conectando ao banco de dados
