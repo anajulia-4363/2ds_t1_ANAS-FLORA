@@ -1,19 +1,17 @@
-from flask import Flask, jsonify, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session
 from hashlib import sha256
-
 from conexao_SQL import Conexao
-app = Flask(__name__)
+
 app = Flask(__name__)
 app.secret_key = 'anas123'  # Defina uma chave secreta para a sessão
 
-
 @app.route("/")
-def pagina__inicial():
-  return render_template('index.html')
+def pagina_inicial():
+    return render_template('index.html')
 
 @app.route("/login-cadastro")
-def pagina__login_cadastro():
-  return render_template('login.html')
+def pagina_login_cadastro():
+    return render_template('login.html')
 
 @app.route('/cadastro', methods=['POST'])
 def cadastro():
@@ -67,35 +65,34 @@ def login():
         # Redirecionar para a página de produtos após o login
         return redirect('/produtos')
     else:
-        alerta ="<script>alert(`Credenciais inválidas. Por favor, tente novamente.`);</script>"
+        alerta = "<script>alert(`Credenciais inválidas. Por favor, tente novamente.`);</script>"
         return render_template('login.html', alerta=alerta)
 
 
 @app.route("/produtos")
-def pagina__produtos():
+def pagina_produtos():
     # Verificar se o usuário está autenticado
     if 'usuario' in session:
-        return render_template('produtos.html')
+        # Conectar ao banco de dados
+        mydb = Conexao.conectar()
+        cursor = mydb.cursor()
+
+        # Consulta SQL para obter os produtos do genero "Feminino"
+        cursor.execute("SELECT * FROM Perfume WHERE genero = 'Feminino'")
+        prdts_feminino = cursor.fetchall()
+
+        # Fechar cursor e conexão
+        cursor.close()
+        mydb.close()
+
+        # Enviar os produtos para o template HTML dentro da classe prdts_feminino
+        return render_template('produtos.html', prdts_feminino=prdts_feminino)
     else:
         # Redirecionar para a página de login-cadastro se o usuário não estiver autenticado
         return redirect('/login-cadastro')
     
-@app.route("/produtos")
-def produtos():
-    # Conectando ao banco de dados
-    mydb = Conexao.conectar()
-    cursor = mydb.cursor()
 
-    # Consulta SQL para obter todos os produtos
-    cursor.execute("SELECT * FROM Produto")# pegar somente o feminino e mandar (la no html tem que puxar pelo 0,1,2,3...)
-    produtos = cursor.fetchall()
 
-    # Fechar cursor e conexão
-    cursor.close()
-    mydb.close()
-
-    # Enviar os produtos para o template HTML
-    return render_template('produtos.html', produtos=produtos)
 
 
 
@@ -103,12 +100,12 @@ def produtos():
 
 
 @app.route("/carrinho")
-def pagina__carrinho():
-  return render_template('carrinho.html')
+def pagina_carrinho():
+    return render_template('carrinho.html')
 
-@app.route("/produto-escolhido")
-def pagina__produto_escolhido():
-  return render_template('produto_escolhido.html')
+@app.route("/produto-escolhido/<id_prt_escolhido>")
+def pagina_produto_escolhido(id_prt_escolhido):
+    return render_template('produto_escolhido.html')
 
 if __name__ == "__main__":
- app.run(debug=True)
+    app.run(debug=True)
