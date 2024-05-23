@@ -40,11 +40,14 @@ def cadastro():
     cursor.execute("INSERT INTO Usuario (cpf, nome, email, endereco, senha, nascimento, telefone) VALUES (%s, %s, %s, %s, %s, %s, %s)", (cpf, nome, email, endereco, senha_hash, nascimento, telefone))
     mydb.commit()
 
+    # Iniciar uma sessão para o usuário
+    session['usuario'] = {'cpf': cpf, 'nome': nome, 'email': email}
+
     cursor.close()
     mydb.close()
 
     # Retornar uma resposta indicando o sucesso do cadastro
-    return render_template('produtos.html')
+    return redirect('/produtos')
 
 # -----------------------------------------------------------------------------
 
@@ -58,12 +61,13 @@ def login():
     senha = request.form.get('senha')
 
     # Verificar as credenciais do usuário
-    cursor.execute("SELECT * FROM Usuario WHERE email = %s AND senha = %s", (email, sha256(senha.encode()).hexdigest()))
+    cursor.execute("SELECT cpf, nome, email FROM Usuario WHERE email = %s AND senha = %s", (email, sha256(senha.encode()).hexdigest()))
     usuario = cursor.fetchone()
 
     if usuario:
+        cpf, nome, email = usuario  # Ajuste para desempacotar corretamente
         # Iniciar uma sessão para o usuário
-        session['usuario'] = usuario
+        session['usuario'] = {'cpf': cpf, 'nome': nome, 'email': email}
         # Redirecionar para a página de produtos após o login
         return redirect('/produtos')
     else:
@@ -105,6 +109,34 @@ def pagina_produtos():
     
 # -----------------------------------------------------------------------------
 
+@app.route('/cadastro-comentario/<id_perfume>', methods=['POST'])
+def cadastrar_comentario(id_perfume):
+    # Conectando ao banco de dados
+    mydb = Conexao.conectar()
+    cursor = mydb.cursor()
+
+    # Recuperar o texto do comentário do formulário
+    comentario = request.form.get('comentario')
+
+    # Verificar se o usuário está autenticado
+    if 'usuario' in session:
+        # Recuperar o CPF do usuário da sessão
+        cpf_usuario = session['usuario']['cpf']
+
+        # Inserir o comentário no banco de dados
+        cursor.execute("INSERT INTO Comentario (cpf, id_perfume, texto_comentario, data_comentario) VALUES (%s, %s, %s, NOW())", (cpf_usuario, id_perfume, comentario))
+        mydb.commit()
+
+        cursor.close()
+        mydb.close()
+
+        # Redirecionar de volta para a página do produto após cadastrar o comentário
+        return redirect(f'/produto-escolhido/{id_perfume}')
+    else:
+        # Se o usuário não estiver autenticado, redirecionar para a página de login
+        return redirect('/login-cadastro')
+
+# -----------------------------------------------------------------------------
 
 @app.route("/carrinho")
 def pagina_carrinho():
@@ -128,18 +160,26 @@ def pagina_cep():
 
 @app.route("/produto-escolhido/<id_prt_escolhido>")
 def pagina_produto_escolhido(id_prt_escolhido):
-    
+    # Conectar ao banco de dados
     mydb = Conexao.conectar()
     cursor = mydb.cursor()
-    cursor.execute(f'SELECT * FROM Perfume WHERE id_perfume = {id_prt_escolhido} ')
+
+    # Recuperar informações do produto escolhido
+    cursor.execute(f'SELECT * FROM Perfume WHERE id_perfume = {id_prt_escolhido}')
     perfume_escolhidoID = cursor.fetchone()
+
+    # Recuperar comentários associados ao produto escolhido
+    cursor.execute("SELECT texto_comentario FROM Comentario WHERE id_perfume = %s", (id_prt_escolhido,))
+    comentarios = cursor.fetchall()
 
     # Fechar cursor e conexão
     cursor.close()
     mydb.close()
-    return render_template('produto_escolhido.html',
-                           perfume_escolhidoID = perfume_escolhidoID)
 
+    # Retornar o template com as informações do produto e os comentários
+    return render_template('produto_escolhido.html',
+                           perfume_escolhidoID=perfume_escolhidoID,
+                           comentarios=comentarios)
 
 
 if __name__ == "__main__":

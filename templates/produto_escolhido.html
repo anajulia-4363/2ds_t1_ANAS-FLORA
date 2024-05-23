@@ -19,34 +19,42 @@
     </header>
     <main>
         <div class="lado_esquerdo">
+            <div class="perfume-info">
+                <h1>{{ perfume_escolhidoID[1] }}</h1>
+                    <p>{{ perfume_escolhidoID[5] }}</p>
+            </div>
             <img src="{{ perfume_escolhidoID[4] }}" alt="">
         </div>
         <div class="lado_direito">
-            <div class="campo">
-                <h1>{{ perfume_escolhidoID[1] }}</h1>
-                <p>{{ perfume_escolhidoID[5] }}</p>
-            </div>
             <div class="campo descricao">
                 <hr>
                 <p>{{ perfume_escolhidoID[2] }}</p>
                 <hr>
             </div>
-            <div class="campo">
-                <h5>Comente:</h5>
-                <form action="#">
+            <div class="campo comentario">
+                <h2>Comente:</h2>
+                <form action="/cadastro-comentario/{{ perfume_escolhidoID[0] }}" method="POST">
                     <div class="caixa-comentario">
                         <label for="comentario">Deixe seu comentário:</label>
-                        <input type="text" id="comentario" name="comentario" placeholder="Digite seu comentário aqui">
+                        <textarea id="comentario" name="comentario" placeholder="Digite seu comentário aqui"></textarea>
                         <button type="submit">Enviar</button>
                     </div>
                 </form>
-        
+                
                 <div class="espaco-comentarios">
                     <h3>Comentários Recentes</h3>
-                    <ul>
-                        <!-- Aqui você pode iterar sobre os comentários, se necessário -->
-                    </ul>
+                    <hr> <!-- Linha horizontal -->
+                    <ol>
+                        {% for comentario in comentarios %}
+                        <li class="comentario-container">
+                            <p class="comentario-texto">{{ comentario[0] }}</p>
+                            <span class="comentario-horario">{{ comentario[1] }}</span>
+                        </li>
+                        {% endfor %}
+                    </ol>
                 </div>
+                
+                
             </div>
         </div>
     </main>

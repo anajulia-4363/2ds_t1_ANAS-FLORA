@@ -4,125 +4,186 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400..900&display=swap');
 /* font-family: "Cinzel", serif; */
 
-header{
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400..900&display=swap');
+/* font-family: "Abril Fatface", serif; */
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-color: var(--dourado);
+}
+
+/* Estilos do cabeçalho */
+header {
     display: flex;
-    height: 40px;
     justify-content: space-between;
     align-items: center;
-    padding: 0 50px;
-    box-sizing: border-box;
-    font-family: monospace;
-    font-weight: bold;
-    font-size: large;
-    position: relative;
-    z-index: 1;
+    background-color: #f2f2f2; /* Cor de fundo do cabeçalho */
+    padding: 10px 20px; /* Espaçamento interno */
+    justify-content: space-around;
+   
 }
-header ul{
-    padding: 0;
+
+.logo_img img {
+    max-height: 50px; /* Altura máxima do logo */
+}
+
+nav ul {
+    list-style-type: none;
     margin: 0;
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-.logo_img{
-    padding-top: 60px;
-    cursor: pointer
-}
-.logo_img img{
-    width: 100px;
-    height: auto;
+    padding: 0;
 }
 
-main{
-    margin-top: -40px;
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    height: 100vh;
-    overflow-y: hidden;
+nav ul li {
+    display: inline;
+    margin-right: 20px; /* Espaçamento entre os itens do menu */
 }
-.lado_esquerdo,.lado_direito{
-    width: 50%;
-    height: 100%;
+.perfume-info {
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 20px; /* Espaçamento entre o texto e a imagem */
 }
-.lado_esquerdo img{
 
-    width: 100%;
-    height: 100%;
+/* Estilos para a imagem */
+.lado_esquerdo img {
+    width: 100%; /* Imagem ocupando toda a largura disponível */
+    height: 500px; /* Altura automática */
+    display: block; /* Exibir como bloco para evitar espaços adicionais */
+    object-fit: cover;
+
+}
+
+.lado_esquerdo {
+    margin-bottom: 20px; /* Margem inferior */
+}
+/* Estilos para o lado direito */
+.lado_direito {
+    max-width: 600px; /* Largura máxima */
+    margin: 0 auto; /* Centralizar o conteúdo */
+    padding: 30px;
+}
+
+.campo {
+    margin-bottom: 20px; /* Margem inferior */
+}
+
+.descricao hr {
+    margin: 20px 0; /* Espaçamento entre a descrição e o HR */
+}
+
+/* Estilos para o formulário de comentário */
+form {
+    margin-top: 20px;
+}
+.lado_esquerdo {
+    position: relative; /* Adiciona contexto de posicionamento */
+    margin-bottom: 20px; /* Margem inferior */
+}
+
+.perfume-info {
+    position: absolute;
+    top: 20px; /* Ajuste a distância do topo conforme necessário */
+    left: 20px; /* Ajuste a distância da esquerda conforme necessário */
+    z-index: 1; /* Garante que o texto fique sobre a imagem */
+    color: white; /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+    width: calc(100% - 40px); /* Largura igual à do lado_esquerdo com espaçamento de 20px em cada lado */
+}
+
+
+.lado_esquerdo img {
+    width: 100%; /* Imagem ocupando toda a largura disponível */
+    height: 500px; /* Altura automática */
+    display: block; /* Exibir como bloco para evitar espaços adicionais */
     object-fit: cover;
 }
-.lado_direito{
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-/* .campo{
-    visibility: hidden;
-} */
-.lado_direito p{
-    text-align: right;
-}
-.descricao{
-    padding: 20px;
-}
 
-/* Título do formulário */
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
+.caixa-comentario label {
+    display: block;
+    margin-bottom: 5px;
 }
-
-/* Caixa de comentário */
-.caixa-comentario {
-    display: flex;
-    align-items: center;
+hr{
+    color: var(--dourado);
 }
-
-/* Label para o campo de comentário */
-label {
-    margin-right: 10px;
-}
-
-/* Input de comentário */
-#comentario {
-    flex: 1;
+textarea {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
+    border: 1px solid var(--dourado);
 }
 
-/* Botão de envio */
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Espaço para comentários */
+/* Estilos para os comentários */
 .espaco-comentarios {
     margin-top: 20px;
 }
 
-/* Título dos comentários */
-h3 {
+.comentario-container {
     margin-bottom: 10px;
 }
 
-/* Lista de comentários */
-ul {
-    list-style: none;
-    padding: 0;
+.comentario-horario {
+    color: var(--dourado);
+}
+.perfume-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    width: calc(100% - 40px);
+    font-family: 'Abril Fatface', serif; /* Escolha a fonte desejada */
 }
 
-/* Comentário individual */
-.comentario {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
+.perfume-info h1 {
+    font-size: 2.5rem; /* Tamanho da fonte do título aumentado */
+}
+
+.perfume-info p {
+    font-size: 1.2rem; /* Tamanho da fonte do texto aumentado */
+}
+
+.lado_esquerdo {
+    position: relative;
+    overflow: hidden; /* Impede que a imagem transborde */
+   
+}
+
+.lado_esquerdo img {
+    width: 100%;
+    height: 400px;
+    display: block;
+    object-fit: cover;
+    transform: translateZ(0); /* Ativa o aceleramento por GPU para um efeito parallax suave */
+}
+
+/* Efeito Parallax */
+.lado_esquerdo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)); /* Gradiente sobre a imagem */
+    z-index: 0;
+    pointer-events: none; /* Impede que o pseudo-elemento seja clicado */
+    transform: translateZ(-1px) scale(1.5); /* Ajusta a profundidade e a escala do pseudo-elemento */
+}
+/* Estilos responsivos */
+@media screen and (max-width: 768px) {
+    nav ul li {
+        margin-right: 10px; /* Reduzir o espaço entre os itens do menu em telas menores */
+    }
+
+    .lado_direito {
+        max-width: 100%; /* Utilizar toda a largura disponível em telas menores */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo_img img {
+        max-height: 40px; /* Reduzir o tamanho do logo em telas muito pequenas */
+    }
 }
