@@ -338,50 +338,54 @@ header a{
 .c01-campo img{
     width: 40%;
 }
-/* -==============- */
+/* CSS base para a seção container-02 */
 .container-02 {
-margin: 70px auto;
-display: flex;
-justify-content: space-evenly;
-align-content: center;
-flex-direction: row;
-visibility: hidden;
+    margin: 70px auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-direction: row;
+    visibility: hidden;
 }
 
 .container-02 img {
     width: 360px;
     height: 240px;
-    object-fit:cover;
-    border-radius: 30px;   
+    object-fit: cover;
+    border-radius: 30px;
     transition: transform 0.3s ease, filter 0.3s ease; /* Adicionando transição para suavizar os efeitos */
 }
 
 .card1 {
-position: relative; /* Posicionamento relativo para o conteúdo do card */
+    position: relative; /* Posicionamento relativo para o conteúdo do card */
 }
 
-.card1 .legenda { /* Classe para o texto que aparece no hover */
-position: absolute;
-top: 50%;
-left: 50%;
-text-decoration: none;
-transform: translate(-50%, -50%);
-text-align: center;
-color: white;
-font-family: 'Abril Fatface', serif;
-font-size: 24px;
-opacity: 0; /* Texto inicialmente transparente */
-transition: opacity 0.7s ease; /* Adicionando transição para suavizar o efeito de opacidade */
+.card1 .legenda {
+    /* Classe para o texto que aparece no hover */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-decoration: none;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: 'Abril Fatface', serif;
+    font-size: 24px;
+    opacity: 0; /* Texto inicialmente transparente */
+    transition: opacity 0.7s ease; /* Adicionando transição para suavizar o efeito de opacidade */
 }
 
-.card1:hover img { /* Estilos para a imagem no hover */
-transform: scale(1.1); /* Zoom na imagem */
-filter: brightness(0.9); /* Escurecendo a imagem */
+.card1:hover img {
+    /* Estilos para a imagem no hover */
+    transform: scale(1.1); /* Zoom na imagem */
+    filter: brightness(0.9); /* Escurecendo a imagem */
 }
 
-.card1:hover .legenda { /* Estilos para o texto no hover */
-opacity: 1; /* Texto se torna opaco */
+.card1:hover .legenda {
+    /* Estilos para o texto no hover */
+    opacity: 1; /* Texto se torna opaco */
 }
+
 /* -==========================- */
 .container-03 {
     position: relative; /* Posicionamento relativo para o efeito paralax */
@@ -604,4 +608,41 @@ opacity: 1; /* Texto se torna opaco */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+/* Media query para telas menores que 880px */
+@media screen and (max-width: 880px) {
+    .container-01 {
+        flex-direction: column; /* Altera o layout para uma coluna */
+        align-items: center; /* Centraliza os itens na coluna */
+    }
+
+    .c01-campo {
+        width: 100%; /* Define a largura total para os campos */
+        margin-bottom: 20px; /* Adiciona um espaçamento entre os campos */
+    }
+}
+/* Media query para ajustar a responsividade */
+@media screen and (max-width: 900px) {
+    .container-02 img {
+        width: 280px; /* Reduz o tamanho da imagem */
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .container-02 {
+        flex-direction: column; /* Altera o layout para uma coluna */
+        align-items: center; /* Centraliza os itens na coluna */
+    }
+
+    .container-02 img {
+        width:  270px; /* Reduz ainda mais o tamanho da imagem */
+        height: 140px;
+    }
+
+    /* Nova regra para aumentar o tamanho da imagem quando estiver abaixo da outra */
+    .container-02 img:last-child {
+        width: 280px;
+        height: 180px;
+    }
 }
