@@ -140,10 +140,66 @@ def cadastrar_comentario(id_perfume):
 
 @app.route("/carrinho")
 def pagina_carrinho():
-    
-   
+    # Verificar se o usuário está autenticado
+    if 'usuario' in session:
+        # Recuperar o CPF do usuário da sessão
+        cpf_usuario = session['usuario']['cpf']
 
-    return render_template('carrinho.html')
+        # Conectar ao banco de dados
+        mydb = Conexao.conectar()
+        cursor = mydb.cursor()
+
+        # Consultar os itens do carrinho para o usuário atual
+        cursor.execute("SELECT cp.nome_perfume, p.descricao, cp.preco, cp.img_perfume FROM Carrinho_Produto cp JOIN Perfume p ON cp.id_perfume = p.id_perfume WHERE cp.cpf_usuario = %s", (cpf_usuario,))
+
+        itens_carrinho = cursor.fetchall()
+
+        # Fechar cursor e conexão
+        cursor.close()
+        mydb.close()
+
+        # Enviar os itens do carrinho para o template HTML
+        return render_template('carrinho.html', itens_carrinho=itens_carrinho)
+    else:
+        # Se o usuário não estiver autenticado, redirecionar para a página de login
+        return redirect('/login-cadastro')
+
+
+
+
+# -----------------------------------------------------------------------------
+
+@app.route('/adicionar-carrinho', methods=['POST'])
+def adicionar_carrinho():
+    if 'usuario' in session:
+        cpf_usuario = session['usuario']['cpf']
+        id_produto = request.form.get('codigo_produto')
+        
+        # Conectar ao banco de dados
+        mydb = Conexao.conectar()
+        cursor = mydb.cursor()
+
+        # Recuperar informações do produto e seu ID
+        cursor.execute("SELECT id_perfume, nome_perfume, genero, preco, img_perfume FROM Perfume WHERE id_perfume = %s", (id_produto,))
+        produto = cursor.fetchone()
+
+        if produto:
+            id_produto = produto[0]  # Aqui recuperamos o ID do produto do banco de dados
+            # Inserir o produto no carrinho com o CPF do usuário
+            cursor.execute("INSERT INTO Carrinho_Produto (cpf_usuario, id_perfume, nome_perfume, genero, preco, img_perfume) VALUES (%s, %s, %s, %s, %s, %s)",)
+            mydb.commit()
+
+            cursor.close()
+            mydb.close()
+
+            return redirect('/carrinho')
+        else:
+            # Se o produto não existir, redirecione para alguma página de erro
+            return redirect('/erro')
+    else:
+        # Se o usuário não estiver logado, redirecione para a página de login
+        return redirect('/login-cadastro')
+
 
 # -----------------------------------------------------------------------------
 

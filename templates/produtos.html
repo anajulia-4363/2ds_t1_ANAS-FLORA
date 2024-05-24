@@ -176,7 +176,10 @@
                       <div class="new-price">R$ {{ produto[7] }}</div>
                   </div>
                   <br>
-                  <button class="add-to-cart-button btncomprar"><a  href="/produto-escolhido">Comprar</a></button>
+                  <form action="/adicionar-carrinho" method="post">
+                        <input type="hidden" name="codigo_produto" value="{{ produto[0] }}">
+                        <button type="submit" class="add-to-cart-button btncomprar">Comprar</button>
+                   </form>
                   <button class="add-to-cart-button btnmais"><a  href="/produto-escolhido/{{ produto[0] }}">Mais</a></button>
                   <a href=""></a>
               </div>
@@ -209,7 +212,10 @@
                   <div class="new-price">R$ {{ produto[7] }}</div>
               </div>
               <br>
-              <button class="add-to-cart-button btncomprar"><a  href="/produto-escolhido">Comprar</a></button>
+              <form action="/adicionar-carrinho" method="post">
+                <input type="hidden" name="codigo_produto" value="{{ produto[0] }}">
+                <button type="submit" class="add-to-cart-button btncomprar">Comprar</button>
+            </form>
               <button class="add-to-cart-button btnmais"><a  href="/produto-escolhido/{{ produto[0] }}">Mais</a></button>
               <a href=""></a>
           </div>
@@ -243,7 +249,10 @@
                     <div class="new-price">R$ {{ produto[7] }}</div>
                 </div>
                 <br>
-                <button class="add-to-cart-button btncomprar"><a  href="/produto-escolhido">Comprar</a></button>
+                <form action="/adicionar-carrinho" method="post">
+                    <input type="hidden" name="codigo_produto" value="{{ produto[0] }}">
+                    <button type="submit" class="add-to-cart-button btncomprar">Comprar</button>
+                </form>
                 <button class="add-to-cart-button btnmais"><a  href="/produto-escolhido/{{ produto[0] }}">Mais</a></button>
                 <a href=""></a>
             </div>
