@@ -187,3 +187,33 @@ textarea {
         max-height: 40px; /* Reduzir o tamanho do logo em telas muito pequenas */
     }
 }
+.li__botao a{
+    text-decoration: none;
+    color: #000000;
+}
+/* Estilos para todos os botões */
+button {
+    background-color: #ccc; /* Cor de fundo inicial */
+    color: #333; /* Cor do texto */
+    border: none; /* Remover borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    cursor: pointer; /* Indicar que é um botão */
+    background-clip: border-box; /* Exibir o fundo até a borda */
+    transition: background-position 0.3s ease; /* Tempo e tipo de transição */
+  }
+  
+  /* Estilos para o botão quando o mouse passa sobre ele */
+  button:hover {
+    background-color: transparent;
+  }
+  
+  /* Estilos específicos para o botão "Comprar" */
+  .comprar {
+    background-color: var(--dourado); /* Cor de fundo inicial para "Comprar" */
+    color: #fff; /* Cor do texto para "Comprar" */
+    border: 2px solid var(--dourado);
+  }
+  .comprar:hover{
+    border: 2px solid var(--dourado);
+    color: var(--dourado);
+  }
