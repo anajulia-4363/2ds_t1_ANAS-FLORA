@@ -215,3 +215,45 @@
 .container-2, .texto-frente{
   visibility: hidden;
 }
+
+/* Media query para telas menores que 880px */
+@media screen and (max-width: 880px) {
+  .container-01 {
+      flex-direction: column; /* Altera o layout para uma coluna */
+      align-items: center; /* Centraliza os itens na coluna */
+  }
+
+  .c01-campo {
+      width: 100%; /* Define a largura total para os campos */
+      margin-bottom: 20px; /* Adiciona um espaçamento entre os campos */
+  }
+}
+/* Media query para ajustar a responsividade */
+@media screen and (max-width: 900px) {
+  .container-02 img {
+      width: 280px; /* Reduz o tamanho da imagem */
+      height: 180px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .container-02 {
+      flex-direction: column; /* Altera o layout para uma coluna */
+      align-items: center; /* Centraliza os itens na coluna */
+  }
+
+  .container-02 img {
+      width:  270px; /* Reduz ainda mais o tamanho da imagem */
+      height: 140px;
+  }
+
+  /* Nova regra para aumentar o tamanho da imagem quando estiver abaixo da outra */
+  .container-02 img:last-child {
+      width: 280px;
+      height: 180px;
+  }
+}
+.li__botao a {
+  text-decoration: none; /* Remover a linha do link */
+  color: #000000;
+}

@@ -84,7 +84,7 @@ button {
   .comprar {
     background-color: var(--dourado); /* Cor de fundo inicial para "Comprar" */
     color: #fff; /* Cor do texto para "Comprar" */
-    border: 1px solid var(--dourado);
+    border: 2px solid var(--dourado);
   }
   .comprar:hover{
     border: 1px solid var(--dourado);
@@ -93,12 +93,60 @@ button {
   /* Estilos específicos para o botão "Excluir" */
   .excluir {
     background-color: var(--azul-royal); /* Cor de fundo inicial para "Excluir" */
-    border:1px solid var(--azul-royal);
+    border:2px solid var(--azul-royal);
     color: #fff; /* Cor do texto para "Excluir" */
   }
   .excluir:hover{
     border:1px solid var(--azul-royal);
     color: var(--azul-royal);
+    
   }
-  
-  
+  .comprar a {
+    text-decoration: none;
+    color: #000000;
+  }
+  .comprar:hover a {
+    text-decoration: none;
+    color: #a7510b;
+  }
+  /* Estilos gerais */
+
+/* Mídias Queries para tablets */
+@media only screen and (max-width: 768px) {
+  header {
+      padding: 0 20px; /* Reduzir o padding para telas menores */
+      margin-bottom: 70px;
+  }
+  hr{
+    margin: 15px 0;
+  }
+  .container {
+      width: 80%; /* Reduzir a largura do container para telas menores */
+  }
+  .campo_produto img {
+      width: 100px; /* Reduzir o tamanho das imagens para telas menores */
+  }
+}
+
+/* Mídias Queries para celulares */
+@media only screen and (max-width: 480px) {
+  header {
+      padding: 0 10px; /* Reduzir ainda mais o padding para telas muito pequenas */
+  }
+  .container {
+      width: 90%; /* Reduzir ainda mais a largura do container para telas muito pequenas */
+  }
+  .campo_produto img {
+      width: 80px; /* Reduzir ainda mais o tamanho das imagens para telas muito pequenas */
+  }
+}
+
+/* Mídias Queries para computadores de alta resolução */
+@media only screen and (min-width: 1200px) {
+  .container {
+      width: 70%; /* Aumentar a largura do container para telas maiores */
+  }
+  .campo_produto img {
+      width: 200px; /* Aumentar o tamanho das imagens para telas maiores */
+  }
+}

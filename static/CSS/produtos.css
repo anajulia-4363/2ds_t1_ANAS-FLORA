@@ -646,3 +646,7 @@ header a{
         height: 180px;
     }
 }
+.add-to-cart-button a{
+    text-decoration: none;
+    color: #ffffff;
+}
