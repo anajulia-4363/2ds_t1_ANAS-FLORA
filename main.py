@@ -8,7 +8,7 @@ app.secret_key = 'anas123'  # Defina uma chave secreta para a sessão
 @app.route("/")
 def pagina_inicial():
     return render_template('index.html')
-# -----------------------------------------------------------------------------
+
 @app.route("/login-cadastro")
 def pagina_login_cadastro():
     return render_template('login.html')
@@ -49,8 +49,6 @@ def cadastro():
     # Retornar uma resposta indicando o sucesso do cadastro
     return redirect('/produtos')
 
-# -----------------------------------------------------------------------------
-
 @app.route('/login', methods=['POST'])
 def login():
     # Conectando ao banco de dados
@@ -73,8 +71,6 @@ def login():
     else:
         alerta = "<script>alert(`Credenciais inválidas. Por favor, tente novamente.`);</script>"
         return render_template('login.html', alerta=alerta)
-
-# -----------------------------------------------------------------------------
 
 @app.route("/produtos")
 def pagina_produtos():
@@ -106,8 +102,6 @@ def pagina_produtos():
     else:
         # Redirecionar para a página de login-cadastro se o usuário não estiver autenticado
         return redirect('/login-cadastro')
-    
-# -----------------------------------------------------------------------------
 
 @app.route('/cadastro-comentario/<id_perfume>', methods=['POST'])
 def cadastrar_comentario(id_perfume):
@@ -136,8 +130,6 @@ def cadastrar_comentario(id_perfume):
         # Se o usuário não estiver autenticado, redirecionar para a página de login
         return redirect('/login-cadastro')
 
-# -----------------------------------------------------------------------------
-
 @app.route("/carrinho")
 def pagina_carrinho():
     # Verificar se o usuário está autenticado
@@ -150,8 +142,7 @@ def pagina_carrinho():
         cursor = mydb.cursor()
 
         # Consultar os itens do carrinho para o usuário atual
-        cursor.execute("SELECT cp.nome_perfume, p.descricao, cp.preco, cp.img_perfume FROM Carrinho_Produto cp JOIN Perfume p ON cp.id_perfume = p.id_perfume WHERE cp.cpf_usuario = %s", (cpf_usuario,))
-
+        cursor.execute("SELECT id_carrinho, nome_perfume, genero, preco, img_perfume FROM Carrinho_Produto WHERE cpf_usuario = %s", (cpf_usuario,))
         itens_carrinho = cursor.fetchall()
 
         # Fechar cursor e conexão
@@ -163,11 +154,6 @@ def pagina_carrinho():
     else:
         # Se o usuário não estiver autenticado, redirecionar para a página de login
         return redirect('/login-cadastro')
-
-
-
-
-# -----------------------------------------------------------------------------
 
 @app.route('/adicionar-carrinho', methods=['POST'])
 def adicionar_carrinho():
@@ -184,9 +170,9 @@ def adicionar_carrinho():
         produto = cursor.fetchone()
 
         if produto:
-            id_produto = produto[0]  # Aqui recuperamos o ID do produto do banco de dados
+            id_produto, nome_produto, genero, preco, img_produto = produto  # Desempacotando as informações do produto
             # Inserir o produto no carrinho com o CPF do usuário
-            cursor.execute("INSERT INTO Carrinho_Produto (cpf_usuario, id_perfume, nome_perfume, genero, preco, img_perfume) VALUES (%s, %s, %s, %s, %s, %s)",)
+            cursor.execute("INSERT INTO Carrinho_Produto (cpf_usuario, id_perfume, nome_perfume, genero, preco, img_perfume) VALUES (%s, %s, %s, %s, %s, %s)", (cpf_usuario, id_produto, nome_produto, genero, preco, img_produto))
             mydb.commit()
 
             cursor.close()
@@ -199,20 +185,6 @@ def adicionar_carrinho():
     else:
         # Se o usuário não estiver logado, redirecione para a página de login
         return redirect('/login-cadastro')
-
-
-# -----------------------------------------------------------------------------
-
-@app.route("/cep")
-def pagina_cep():
-    
-   
-
-    return render_template('cep.html')
-
-
-
-# -----------------------------------------------------------------------------
 
 @app.route("/produto-escolhido/<id_prt_escolhido>")
 def pagina_produto_escolhido(id_prt_escolhido):
@@ -237,6 +209,29 @@ def pagina_produto_escolhido(id_prt_escolhido):
                            perfume_escolhidoID=perfume_escolhidoID,
                            comentarios=comentarios)
 
+@app.route('/remover-carrinho/<int:id_carrinho>', methods=['POST'])
+def remover_item_carrinho(id_carrinho):
+    if 'usuario' in session:
+        cpf_usuario = session['usuario']['cpf']
+        
+        # Conectar ao banco de dados
+        mydb = Conexao.conectar()
+        cursor = mydb.cursor()
+
+        # Verificar se o item do carrinho pertence ao usuário autenticado
+        cursor.execute("DELETE FROM Carrinho_Produto WHERE cpf_usuario = %s AND id_carrinho = %s", (cpf_usuario, id_carrinho))
+        mydb.commit()
+
+        # Fechar cursor e conexão
+        cursor.close()
+        mydb.close()
+
+    # Redirecionar de volta para a página do carrinho após excluir o item
+    return redirect('/carrinho')
+
+@app.route("/cep")
+def pagina_cep():
+    return render_template('cep.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

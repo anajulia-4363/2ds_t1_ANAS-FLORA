@@ -12,7 +12,7 @@
         <div class="logo_img"><img src="/static/IMG/logos/logo.png" alt="Logo"></div>
         <nav>
             <ul>
-                <li class="li__botao" href="/">HOME</li>
+                <li class="li__botao"><a href="/">HOME</a></li>
                 <li class="li__botao"><a href="/produtos">Produtos</a></li>
             </ul>
         </nav>
@@ -21,26 +21,24 @@
         <div class="container">
             <h1>Carrinho de Compras</h1>
             {% if itens_carrinho %}
-            {% for item in itens_carrinho %}
-                <div class="campo_produto">
-                    <div class="img">
-                        <img src="{{ item[3] }}" alt="foto do produto">
+                {% for item in itens_carrinho %}
+                    <div class="campo_produto">
+                        <div class="img">
+                            <img src="{{ item[4] }}" alt="foto do produto">
+                        </div>
+                        <div class="conteudo">
+                            <h2>{{ item[1] }}</h2>
+                            <p>R${{ item[3] }}</p>
+                            <form action="/remover-carrinho/{{ item[0] }}" method="post">
+                                <button type="submit">Excluir</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="conteudo">
-                        <h2>{{ item[0] }}</h2>
-                        <p>R${{ item[2] }}</p>
-                        <button class="excluir"><a  href="/remover-carrinho/{{ item[0] }}">Remover</a></button>
-
-                        <a href=""></a>
-
-                    </div>
-                </div>
-                <hr>
-            {% endfor %}
-        {% else %}
-            <p>O seu carrinho está vazio.</p>
-        {% endif %}
-        
+                    <hr>
+                {% endfor %}
+            {% else %}
+                <p>O seu carrinho está vazio.</p>
+            {% endif %}
             <button class="comprar"><a href="/cep">Finalizar Compra</a></button>
         </div>
     </main>

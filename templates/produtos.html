@@ -177,9 +177,10 @@
                   </div>
                   <br>
                   <form action="/adicionar-carrinho" method="post">
-                        <input type="hidden" name="codigo_produto" value="{{ produto[0] }}">
-                        <button type="submit" class="add-to-cart-button btncomprar">Comprar</button>
-                   </form>
+                    <input type="hidden" name="codigo_produto" value="{{ produto[0] }}">
+                    <button type="submit" class="add-to-cart-button btncomprar">Comprar</button>
+                </form>
+                
                   <button class="add-to-cart-button btnmais"><a  href="/produto-escolhido/{{ produto[0] }}">Mais</a></button>
                   <a href=""></a>
               </div>
