@@ -3,7 +3,7 @@ from hashlib import sha256
 from conexao_SQL import Conexao
 
 app = Flask(__name__)
-app.secret_key = 'anas123'  # Defina uma chave secreta para a sessão
+app.secret_key = 'anas123'  
 
 @app.route("/")
 def pagina_inicial():
