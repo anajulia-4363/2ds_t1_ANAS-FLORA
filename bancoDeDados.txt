@@ -1,0 +1,52 @@
+-- Criando o banco de dados ANAS_FLORA se ele não existir
+CREATE DATABASE IF NOT EXISTS ANAS_FLORA;
+
+-- Usando o banco de dados ANAS_FLORA
+USE ANAS_FLORA;
+
+-- Criando a tabela Usuario
+CREATE TABLE IF NOT EXISTS Usuario (
+  cpf VARCHAR(11) PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  endereco VARCHAR(255),
+  senha VARCHAR(255) NOT NULL,
+  nascimento DATE NOT NULL,
+  telefone VARCHAR(20)
+);
+
+-- Criando a tabela Perfume
+CREATE TABLE IF NOT EXISTS Perfume (
+  id_perfume INT PRIMARY KEY AUTO_INCREMENT,
+  nome_perfume VARCHAR(50) NOT NULL,
+  descricao TEXT,
+  img_perfume VARCHAR(255),
+  propaganda_perfume VARCHAR(255),
+  categoria VARCHAR(50) NOT NULL,
+  genero ENUM('Feminino', 'Masculino', 'Infantil') NOT NULL,
+  preco DECIMAL(10,2) NOT NULL
+);
+
+-- Criando a tabela Comentario
+CREATE TABLE IF NOT EXISTS Comentario (
+  id_comentario INT PRIMARY KEY AUTO_INCREMENT,
+  cpf VARCHAR(11) NOT NULL,
+  id_perfume INT NOT NULL,
+  texto_comentario TEXT NOT NULL,
+  data_comentario DATETIME NOT NULL,
+  FOREIGN KEY (cpf) REFERENCES Usuario(cpf),
+  FOREIGN KEY (id_perfume) REFERENCES Perfume(id_perfume)
+);
+
+-- Criando a tabela Carrinho_Produto com a coluna cpf_usuario
+CREATE TABLE IF NOT EXISTS Carrinho_Produto (
+  id_carrinho INT PRIMARY KEY AUTO_INCREMENT,
+  cpf_usuario VARCHAR(11) NOT NULL,
+  id_perfume INT NOT NULL,
+  nome_perfume VARCHAR(100) NOT NULL,
+  genero VARCHAR(50) NOT NULL,
+  preco DECIMAL(10,2) NOT NULL,
+  img_perfume VARCHAR(255),
+  FOREIGN KEY (cpf_usuario) REFERENCES Usuario(cpf),
+  FOREIGN KEY (id_perfume) REFERENCES Perfume(id_perfume)
+);
