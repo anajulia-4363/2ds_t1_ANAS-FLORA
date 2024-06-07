@@ -1,3 +1,4 @@
+
 :root {
     --bg-color: #04044c;
     --secondary-bg-color: #fcf1f7;
@@ -159,4 +160,33 @@
   #voltar-btn a {
     text-decoration: none; /* Remover a linha do link */
     color: #F4F1E8;
+}
+/* Estilos do cabeçalho */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff48; /* Cor de fundo do cabeçalho */
+  padding: 10px 20px; /* Espaçamento interno */
+  justify-content: space-around;
+ 
+}
+
+.logo_img img {
+  max-height: 50px; /* Altura máxima do logo */
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+  color: var(--bg-color);
+  padding: 0 5px 0 5px;
+}
+nav ul li {
+  display: inline;
+  margin-right: 20px; /* Espaçamento entre os itens do menu */
 }

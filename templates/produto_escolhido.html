@@ -47,12 +47,15 @@
                     <ol>
                         {% for comentario in comentarios %}
                         <li class="comentario-container">
+                            <span class="comentario-nome">{{ comentario[2] }}:</span>
                             <p class="comentario-texto">{{ comentario[0] }}</p>
                             <span class="comentario-horario">{{ comentario[1] }}</span>
                         </li>
+                        <hr>
                         {% endfor %}
                     </ol>
                 </div>
+                
                 
                 
             </div>

@@ -17,9 +17,8 @@
           <!-- Outros links de navegação -->
           {% if 'usuario' in session %}
               <li>Bem-vindo, {{ session['usuario']['nome'] }}</li>
-              <li><a href="/logout">Logout</a></li>
+              <li><a href="/login">Logout</a></li>
           {% else %}
-              <li><a href="/login-cadastro">Login / Cadastro</a></li>
           {% endif %}
       </ul>
   </nav>

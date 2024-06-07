@@ -115,15 +115,24 @@ textarea {
 
 /* Estilos para os comentários */
 .espaco-comentarios {
+    max-width: 600vw;
     margin-top: 20px;
 }
 
 .comentario-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 10px;
+    background-color: rgba(250, 235, 215, 0.503);
+    margin-top: 5px ;
+    padding: 10px;
 }
-
+.comentario-nome{
+    color: #333;
+}
 .comentario-horario {
-    color: var(--dourado);
+    color: #888787;
 }
 .perfume-info {
     position: absolute;
@@ -171,6 +180,20 @@ textarea {
     pointer-events: none; /* Impede que o pseudo-elemento seja clicado */
     transform: translateZ(-1px) scale(1.5); /* Ajusta a profundidade e a escala do pseudo-elemento */
 }
+
+hr-comenatrio{
+    color: #333;
+}
+
+
+
+
+
+
+
+
+
+
 /* Estilos responsivos */
 @media screen and (max-width: 768px) {
     nav ul li {

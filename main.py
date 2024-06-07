@@ -114,8 +114,13 @@ def cadastrar_comentario(id_perfume):
 
     # Verificar se o usuário está autenticado
     if 'usuario' in session:
-        # Recuperar o CPF do usuário da sessão
+        # Recuperar o CPF e nome do usuário da sessão
         cpf_usuario = session['usuario']['cpf']
+        nome_usuario = session['usuario']['nome']
+
+        # Consultar o nome do usuário com base no CPF
+        cursor.execute("SELECT nome FROM Usuario WHERE cpf = %s", (cpf_usuario,))
+        nome_usuario = cursor.fetchone()[0]
 
         # Inserir o comentário no banco de dados
         cursor.execute("INSERT INTO Comentario (cpf, id_perfume, texto_comentario, data_comentario) VALUES (%s, %s, %s, NOW())", (cpf_usuario, id_perfume, comentario))
@@ -196,8 +201,8 @@ def pagina_produto_escolhido(id_prt_escolhido):
     cursor.execute(f'SELECT * FROM Perfume WHERE id_perfume = {id_prt_escolhido}')
     perfume_escolhidoID = cursor.fetchone()
 
-    # Recuperar comentários associados ao produto escolhido
-    cursor.execute("SELECT texto_comentario FROM Comentario WHERE id_perfume = %s", (id_prt_escolhido,))
+    # Recuperar comentários associados ao produto escolhido com o nome do usuário e o horário
+    cursor.execute("SELECT c.texto_comentario, c.data_comentario, u.nome FROM Comentario c INNER JOIN Usuario u ON c.cpf = u.cpf WHERE c.id_perfume = %s", (id_prt_escolhido,))
     comentarios = cursor.fetchall()
 
     # Fechar cursor e conexão
